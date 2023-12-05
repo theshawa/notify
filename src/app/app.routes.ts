@@ -10,35 +10,25 @@ export const routes: Routes = [
   {
     path: '',
     component: NotesPageComponent,
-    title: ({ queryParams }) => {
-      const search = queryParams['search'];
-      const category = queryParams['category'];
-      return `${search ? "search:'" + search + "' | " : ''}Notes | Notify`;
-    },
   },
   {
     path: 'categories',
     component: CategoriesPageComponent,
-    title: 'Categories | Notify',
   },
   {
     path: 'new-category',
     component: NewCategoryPageComponent,
-    title: 'New Category | Notify',
   },
   {
     path: 'new-note',
     component: NewNotePageComponent,
-    title: 'New Note | Notify',
   },
   {
     path: 'notes/:id',
     component: NotePageComponent,
-    title: 'Notify',
   },
   {
     path: 'edit-note/:id',
     component: EditNotePageComponent,
-    title: 'Edit Note | Notify',
   },
 ];
