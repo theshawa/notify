@@ -1,0 +1,22 @@
+<div
+  class="flex items-center px-4 sm:px-8 fixed left-0 top-0 z-20 w-full py-8 h-20"
+>
+  <h2 class="flex-1 truncate mr-4">{{ note.title }}</h2>
+  <a
+    title="Edit this note"
+    [routerLink]="'/edit-note/' + note.id"
+    class="text-3xl font-light ml-auto flex items-center justify-center"
+  >
+    <i>edit</i>
+  </a>
+  <button
+    title="Close"
+    (click)="close()"
+    class="text-3xl font-light ml-4 sm:ml-8 sm:ml flex items-center justify-center"
+  >
+    <i>close</i>
+  </button>
+</div>
+<div class="mt-16">
+  <div class="note-content" [innerHTML]="note.content"></div>
+</div>

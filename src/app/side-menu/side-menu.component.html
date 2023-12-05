@@ -1,0 +1,36 @@
+<header
+  class="py-4 sm:p-8 sticky top-0 h-screen flex flex-col items-center border-r border-dark-200 w-20 sm:w-28 flex-shrink-0"
+>
+  <span class="font-bold text-lg sm:text-xl">Notify</span>
+  <nav class="flex-1 my-16 flex flex-col space-y-5">
+    <a
+      routerLink="/"
+      routerLinkActive="active"
+      title="Notes"
+      [routerLinkActiveOptions]="{
+        queryParams: 'ignored',
+        matrixParams: 'exact',
+        paths: 'exact',
+        fragment: 'exact'
+      }"
+      class="nav-link"
+    >
+      <i>notes</i>
+    </a>
+    <a
+      routerLink="/categories"
+      title="Categories"
+      routerLinkActive="active"
+      class="nav-link"
+    >
+      <i>category</i>
+    </a>
+  </nav>
+  <a
+    title="New Note"
+    routerLink="/new-note"
+    class="bg-dark text-light w-12 sm:w-16 aspect-square rounded-full text-3xl flex items-center justify-center"
+  >
+    <i>note_add</i>
+  </a>
+</header>

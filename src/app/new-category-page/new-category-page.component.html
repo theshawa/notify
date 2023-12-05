@@ -1,0 +1,47 @@
+<div
+  class="w-full max-w-2xl bg-light border border-dark-200 m-auto rounded-xl max-h-full overflow-auto"
+>
+  <div
+    class="flex items-center justify-between px-4 py-3 sm:px-8 sm:py-6 sticky top-0 bg-light"
+  >
+    <h2 class="flex-1">New Category</h2>
+    <button
+      (click)="close()"
+      class="text-3xl font-light ml-4 text-dark-600 hover:text-dark-900"
+    >
+      <i>close</i>
+    </button>
+  </div>
+  <form
+    [formGroup]="newForm"
+    (submit)="handleNewSubmit()"
+    class="px-4 pb-6 sm:px-8 flex flex-col space-y-8"
+  >
+    <label class="input">
+      <span>Name</span>
+      <input
+        autofocus
+        formControlName="name"
+        type="text"
+        placeholder="Ex: Education"
+      />
+    </label>
+    <label class="input">
+      <span>Theme</span>
+      <input
+        formControlName="theme"
+        type="color"
+        class="w-10 h-10"
+        list="colorOptions"
+      />
+      <datalist id="colorOptions">
+        <datalist id="colorOptions">
+          @for (theme of themes; track $index) {
+          <option>{{ theme }}</option>
+          }
+        </datalist>
+      </datalist>
+    </label>
+    <button type="submit" [disabled]="!newForm.valid">Create</button>
+  </form>
+</div>

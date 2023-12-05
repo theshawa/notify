@@ -1,0 +1,64 @@
+@if (notesService.notes.length) {
+<div class="flex flex-col md:flex-row justify-between md:items-start">
+  <div class="flex items-center">
+    <select
+      [(ngModel)]="selectedCategory"
+      (change)="navigateQuery()"
+      class="bg-transparent font-medium text-2xl leading-3 pr-4 outline-none h-8 flex-1"
+    >
+      <option value="">All Notes</option>
+      @for (category of categoriesService.categories; track $index) {
+      <option [value]="category.id">
+        {{ category.name }}
+      </option>
+      }
+    </select>
+    @if (selectedCategory) {
+    <span
+      class="w-4 aspect-square rounded-full ml-4"
+      [style.background]="
+        categoriesService.getCategoryById(selectedCategory)?.theme ?? 'none'
+      "
+    ></span>
+    }
+  </div>
+  <div
+    class="flex items-center px-4 py-2 border border-dark-200 rounded-lg mt-4 md:mt-0"
+  >
+    <i class="text-xl text-dark-500 mr-2">search</i>
+    <input
+      [(ngModel)]="searchQuery"
+      (input)="navigateQuery()"
+      type="search"
+      class="placeholder:text-dark-500 bg-transparent outline-none flex-1"
+      placeholder="Search notes here"
+    />
+  </div>
+</div>
+} @if (!notesService.notes.length) {
+<div class="w-full h-full text-center flex flex-col items-center pt-[15vh]">
+  <img
+    ngSrc="/assets/new-note.png"
+    priority
+    alt="A student writing notes"
+    class="w-48 h-48 object-contain mb-2"
+    width="300"
+    height="300"
+  />
+  <p>It's time to write some notes</p>
+  <a
+    routerLink="/new-note"
+    class="mt-3 px-6 py-3 bg-dark text-light rounded-lg font-medium"
+  >
+    <i>edit</i> Write a note
+  </a>
+</div>
+}@else { @if (showingNotes.length) {
+<div class="card-grid mt-8">
+  @for (note of showingNotes; track $index) {
+  <app-note-card [data]="note" />
+  }
+</div>
+}@else {
+<p class="text-dark-500 mt-8">No notes found</p>
+} }

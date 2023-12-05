@@ -1,0 +1,74 @@
+<div class="flex flex-wrap">
+  <h2 class="flex-1">Categories</h2>
+  <a
+    routerLink="/new-category"
+    title="Add Category"
+    class="bg-dark font-medium w-10 sm:w-12 rounded-full aspect-square ml-4 text-light text-2xl flex items-center justify-center"
+  >
+    <i>add</i>
+  </a>
+</div>
+<div class="card-grid mt-8">
+  @for (category of categoriesService.categories; track $index) {
+  <app-category-card [data]="category" (edit)="editCategory(category)" />
+  } @if (!categoriesService.categories.length) {
+  <a
+    routerLink="/new-category"
+    class="w-full h-44 border border-dashed border-dark-300 flex flex-col items-center justify-center text-center rounded-lg text-dark-500"
+  >
+    <i class="text-4xl font-light">add</i>
+    <span class="font-medium">New Category</span>
+  </a>
+  }
+</div>
+@if (currentEditing) {
+<div
+  class="w-full h-full bg-dark/20 backdrop-blur-sm fixed left-0 top-0 flex p-4 sm:p-8"
+>
+  <div
+    class="w-full max-w-2xl bg-light shadow-sm mx-auto mb-auto rounded-xl max-h-full overflow-auto"
+  >
+    <div
+      class="flex items-center justify-between px-4 py-3 sm:px-8 sm:py-6 sticky top-0 bg-light"
+    >
+      <h2 class="flex-1">Edit Category</h2>
+      <button
+        (click)="currentEditing = null"
+        class="text-3xl font-light ml-4 text-dark-600 hover:text-dark-900"
+      >
+        <i>close</i>
+      </button>
+    </div>
+    <form
+      [formGroup]="editingForm"
+      (submit)="handleEditSubmit()"
+      class="px-4 pb-6 sm:px-8 flex flex-col space-y-8"
+    >
+      <label class="input">
+        <span>Name</span>
+        <input
+          autofocus
+          formControlName="name"
+          type="text"
+          placeholder="Ex: Education"
+        />
+      </label>
+      <label class="input">
+        <span>Theme</span>
+        <input
+          formControlName="theme"
+          type="color"
+          class="w-10 h-10"
+          list="colorOptions"
+        />
+        <datalist id="colorOptions">
+          @for (theme of themes; track $index) {
+          <option>{{ theme }}</option>
+          }
+        </datalist>
+      </label>
+      <button type="submit" [disabled]="!editingForm.valid">Update</button>
+    </form>
+  </div>
+</div>
+}

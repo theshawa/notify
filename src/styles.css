@@ -1,1 +1,139 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Material Symbols Outlined";
+  font-style: normal;
+  src: url("./assets/fonts/MaterialSymbolsOutlined[FILL\,GRAD\,opsz\,wght].woff2")
+    format("woff");
+}
+
+:root {
+  @apply text-base bg-light text-dark;
+  font-family: "Ubuntu", sans-serif;
+}
+
+h2 {
+  @apply text-2xl font-medium;
+}
+
+i {
+  font-family: "Material Symbols Outlined";
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  direction: ltr;
+  vertical-align: middle;
+}
+
+.nav-link {
+  @apply text-3xl text-dark-500 font-light w-12 sm:w-16 aspect-square hover:bg-dark-100 rounded-full flex items-center justify-center;
+}
+
+.nav-link.active {
+  @apply text-dark bg-dark-200/50 pointer-events-none;
+}
+
+.card-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-8;
+}
+
+.action-btn {
+  @apply w-10 h-10 flex-shrink-0 flex items-center justify-center text-2xl font-light hover:bg-dark/5 rounded-full;
+}
+
+option {
+  @apply hover:bg-dark;
+}
+
+.input {
+  @apply flex flex-col;
+}
+
+.input span {
+  @apply text-sm text-dark-600 mb-1;
+}
+
+.input input:not([type="color"]) {
+  @apply text-base border border-dark-300 bg-transparent py-2 px-4 rounded-md outline-none focus:border-dark;
+}
+
+.input input[type="color"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  @apply border border-dark-300 rounded-md py-1 w-36 px-2 bg-transparent cursor-pointer focus:border-dark outline-none;
+}
+
+button[type="submit"] {
+  @apply bg-dark px-4 py-2 rounded-md font-medium text-light max-w-[100px] w-full ml-auto disabled:opacity-60 disabled:cursor-not-allowed;
+}
+
+.input input[type="color"]::-webkit-color-swatch {
+  @apply rounded-sm;
+}
+.input input[type="color"]::-moz-color-swatch {
+  @apply rounded-sm;
+}
+
+small {
+  @apply text-sm;
+}
+
+.ck-content {
+  border: none !important;
+  padding: 0 !important;
+  min-height: 70vh !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+}
+
+.ck-placeholder::before {
+  color: rgb(100 116 139) !important;
+}
+
+.ck-content a,
+.note-content a {
+  @apply underline text-primary;
+}
+
+.ck-content ul,
+.note-content ul {
+  @apply list-disc pl-5;
+}
+
+.ck-content ol,
+.note-content ol {
+  @apply list-decimal pl-5;
+}
+
+.ck-content ul.todo-list,
+.note-content ul.todo-list {
+  @apply pl-8;
+}
+
+.ck-content .todo-list .todo-list__label > input[checked]:before {
+  background: rgb(37 99 235) !important;
+  border-color: rgb(37 99 235) !important;
+}
+
+.note-content ul.todo-list li::marker {
+  content: "✅";
+}
+
+.note-content ul.todo-list span {
+  @apply pl-2;
+}
+
+.ck-powered-by {
+  display: none !important;
+}
+
+.ck-balloon-panel {
+  left: 20px !important;
+}
